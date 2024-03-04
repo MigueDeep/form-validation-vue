@@ -6,109 +6,92 @@
         <div>
             <div class="card">
                 <div class="card-body">
-                    <form @submit="submitForm" @reset="resetForm">
-
+                    <FormulateForm 
+                        name="my-form"
+                        v-model="formValues"
+                        @submit="submitForm" @reset="resetForm">
                         <!-- Nombre -->
                         <div class="mb-3">
-                            <label for="name" class="form-label">Nombre Completo</label>
-                            <FormulateInput type="text" id="name" v-model="name"
-                                validation="^required|min:4,length|matches:/^[a-zA-Z\s]*$/" :validation-messages="{
+                            <label for="name" class="form-label">Nombre copleto</label>
+                            <FormulateInput ref="inputName" type="text" id="name" name="name"
+                                validation="^required|min:4,length|matches:/^[a-zA-Z\s]*$/"
+                                :validation-messages="{
                                     required: 'El nombre es requerido',
                                     min: 'El nombre debe tener al menos 4 caracteres',
                                     matches: 'El nombre solo puede contener letras',
-                                }" />
+                                }"
+
+                            />
                         </div>
-
-
 
                         <div class="fullname">
                             <!-- Telefono -->
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Telefono</label>
-                                <FormulateInput type="number" class="form-control" id="phone" v-model="phone"
-                                    validation="^required|min:10,length|max:10,length" :validation-messages="{
-                                        required: 'El telefono es requerido',
-                                        min: 'El telefono debe tener al menos 10 caracteres',
-                                        max: 'El telefono debe tener maximo 10 caracteres',
-                                    }" />
+                                <FormulateInput type="number" id="phone" name="phone"
+                                    validation="^required|min:10,length|max:10,length" 
+                                    :validation-messages="{
+                                    required: 'El telefono es requerido',
+                                    min: 'El telefono debe tener al menos 10 caracteres',
+                                    max: 'El telefono debe tener maximo 10 caracteres',
+                                }" 
+                                />
 
                             </div>
                             <!-- Fecha de nacimiento -->
-                            <div class="mb-3">  
+                            <div class="mb-3">
                                 <label for="birthday" class="form-label">Fecha de nacimiento</label>
                                 <FormulateInput type="date" name="date" 
-                                    validation="^required|date:DD/MM/YYYY|before:today"
-                                    :validation-messages="{
-                                        required: 'La fecha de nacimiento es requerida',
-                                        date: 'La fecha debe tener el formato MM/DD/YYYY',
-                                        before: 'La fecha de nacimiento no puede ser mayor a la fecha actual'
-                                    }" />
-                            </div>
-                        </div>
-
-                        <div class="direction">
-                            <!-- Estado -->
-                            <div class="mb-3">
-                                <label for="state" class="form-label">Estado</label>
-                                <input type="text" class="form-control" id="state" v-model="state">
-                            </div>
-
-                            <!-- Ciudad -->
-                            <div class="mb-3">
-                                <label for="city" class="form-label">Ciudad/Municipio</label>
-                                <input type="text" class="form-control" id="city" v-model="city">
-                            </div>
-                        </div>
-
-                        <div class="direction-two">
-                            <!-- Codigo Postal -->
-                            <div class="mb-3">
-                                <label for="zip" class="form-label">Codigo Postal</label>
-                                <input type="number" class="form-control" id="zip" v-model="zip">
-                            </div>
-
-                            <!-- Calle -->
-                            <div class="mb-3">
-                                <label for="street" class="form-label">Calle</label>
-                                <input type="text" class="form-control" id="street" v-model="street">
-                            </div>
-
-                            <!-- Numero -->
-                            <div class="mb-3">
-                                <label for="number" class="form-label">Numero</label>
-                                <input type="number" class="form-control" id="number" v-model="number">
+                                validation="^required|date|"
+                                :validation-messages="{
+                                required: 'La fecha de nacimiento es requerida',
+                                date: 'La fecha debe tener el formato MM/DD/YYYY'
+                                }" 
+                                />
                             </div>
                         </div>
 
                         <!-- Email -->
                         <div class="mb-3">
                             <label for="email" class="form-label">Correo Electronico</label>
-                            <input type="email" class="form-control" id="email" v-model="email">
+                            <FormulateInput type="email" name="email" class="mb-3"
+                                validation="^required|email" 
+                                :validation-messages="{
+                                required: 'El correo electronico es requerido',
+                                email: 'El correo no es valido'
+                            }" 
+                            />
                         </div>
 
-                        <!-- Contrase�a -->
+                        <!-- Contrase�a -->
                         <div class="mb-3">
-                            <label for="password" class="form-label">Contra</label>
-                            <FormulateInput type="password" name="password" validation="required" class="mb-3"
-                            :validation-messages="{ required: 'La contra es requerida' }"
+                            <label for="password" class="form-label">Contraseña</label>
+                            <FormulateInput type="password" name="password" 
+                                validation="^required"
+                                :validation-messages="{
+                                    required: 'La contraseña es requerida'
+                                }" 
+                                label-is-valid-class="my-valid-class" 
                             />
 
-                            <label for="confirm">Confirmar contra</label>
-                            <FormulateInput  type="password" name="password_confirm"
-                                validation="required|confirm" validation-name="Password confirmation"
-                                :validation-messages="{ required: 'La confirmacion de la contra es requerida', confirm: 'Las contras no coinciden' }"
-                                />
+                            <label for="password_confirm" class="form-label">Confirmar Contraseña</label>
+                            <FormulateInput type="password" name="password_confirm" 
+                                validation="^required|confirm"
+                                :validation-messages="{
+                                    required: 'La confirmacion de la contraseña es requerida',
+                                    confirm: 'Las contraseñas no coinciden'
+                                }"
+                                validation-name="Password confirmation" 
+                                label-is-valid-class="my-valid-class" />
                         </div>
 
-                        <FormulateInput type="checkbox" label="Acepto los terminos y condiciones" name="terms"
-                            validation="accepted"
-                            :validation-messages="{ accepted: 'Debes de aceptar los terminos y condiciones' }"
-                            />
-
+                        {{ formValues }}
+                        
+                        
                         <button type="submit" class="btn btn-primary mx-2">Enviar</button>
-                        <button type="reset" class="btn btn-danger">Limpiar campos</button>
+                        <button type="reset" @click="resetForm" class="btn btn-danger">Limpiar campos</button>
 
-                    </form>
+                    </FormulateForm>
                 </div>
             </div>
         </div>
@@ -117,38 +100,22 @@
 
 <script>
 
-import * as Yup from 'yup';
-
 export default {
     data() {
         return {
-            name: '',
-            phone: '',
-            birthday: '',
-            state: '',
-            city: '',
-            zip: '',
-            street: '',
-            number: '',
-            email: '',
-            password: ''
+            formValues: {},
         }
     },
     methods: {
-        submitForm(e) {
+        submitForm: function(e) {
             alert('Formulario enviado');
-
+            console.log(this.formValues);
         },
-        resetForm() {
-            Object.entries(this.$data).forEach(([key]) => {
-                this.$data[key] = '';
-            });
-        }
+        resetForm: function() {
+            this.formValues = {};
+            this.$formulate.reset('my-form');
+        },
     },
-    validations: {
-        name: Yup.string().required("El nombre es requerido").matches(/^[a-zA-Z\s]*$/, "El nombre solo puede contener letras"),
-
-    }
 };
 </script>
 
@@ -168,18 +135,5 @@ export default {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 50%;
     margin: 0 auto;
-}
-
-.fullname,
-.direction {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-}
-
-.direction-two {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
 }
 </style>
