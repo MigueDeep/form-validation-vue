@@ -4,7 +4,7 @@
 
 <template>
   <div id="app">
-    <Form/>
+    <Form />
   </div>
 </template>
 

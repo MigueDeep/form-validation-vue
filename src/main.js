@@ -4,7 +4,11 @@ import './assets/formulate.css'
 import VueFormulate from "@braid/vue-formulate";
 
 
-Vue.use(VueFormulate);
+Vue.use(VueFormulate, {
+  classes: {
+    labelIsValid: "isValid"
+  }
+});
 
 import './assets/main.css'
 
