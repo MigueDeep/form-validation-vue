@@ -1,29 +1,21 @@
 # form-validation-vue
 
-This template should help get you started developing with Vue 3 in Vite.
+Formulario con validaciones usando la libreria de Vue Formulate 
 
-## Recommended IDE Setup
+#Vue Formulate
+Librería para manejo de formularios con Vue 2
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+# Documentacionw
+https://vueformulate.com/
 
-## Customize configuration
+#Instalación
+npm install @braid/vue-formulate
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+#Importaciones en Main.js
+import Vue from "vue";
+import VueFormulate from "@braid/vue-formulate";
 
-## Project Setup
+Vue.use(VueFormulate);
 
-```sh
-npm install
-```
 
-### Compile and Hot-Reload for Development
 
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
